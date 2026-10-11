@@ -27,6 +27,7 @@
   .seg button.on { background: var(--card); color: var(--text); font-weight: 600; box-shadow: 0 1px 2px rgba(0, 0, 0, .08); }
   input[type=search] { flex: 1 1 150px; min-width: 0; font: inherit; font-size: 14px; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); outline: none; }
   input[type=search]:focus { border-color: var(--accent); }
+  main > a.job:first-child { margin-top: 22px; }
   h2 { font-size: 13px; font-weight: 700; color: var(--muted); margin: 30px 4px 10px; }
   a.job { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; color: inherit; text-decoration: none; transition: border-color .12s, box-shadow .12s; }
   a.job:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0, 0, 0, .05); }
@@ -54,6 +55,7 @@
   <div class="filters">
     <div class="seg" id="regions"></div>
     <div class="seg" id="period"></div>
+    <div class="seg" id="sort"></div>
     <input type="search" id="q" placeholder="Søk …">
   </div>
 
@@ -72,9 +74,9 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const PERIODS = [['all', 'Alle'], ['week', '7 dager'], ['today', 'I dag']];
 const REGIONS = [['all', 'Hele landet'], ['bergen', 'Bergen'], ['oslo', 'Oslo']];
 const REGION_NAME = { bergen: 'Bergen-området', oslo: 'Oslo-området' };
-const REL_NAME = { høy: 'Svært relevant', middels: 'Relevant', lav: 'Mindre relevant' };
+const SORTS = [['new', 'Nyeste'], ['best', 'Mest relevant']];
 const REGION_ORDER = { bergen: 0, oslo: 1, '': 2 };
-const state = { data: null, period: 'all', region: 'all', q: '', loose: false };
+const state = { data: null, period: 'all', region: 'all', sort: 'new', q: '', loose: false };
 
 const isoDay = (d) => new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
 const today = () => isoDay(new Date());
@@ -109,6 +111,7 @@ function render() {
   const weekAgo = daysAgo(6);
   seg($('regions'), REGIONS, state.region, 'region');
   seg($('period'), PERIODS, state.period, 'period');
+  seg($('sort'), SORTS, state.sort, 'sort');
   $('loose-label').textContent = `Vis også ${active.filter((j) => j.match !== 'tittel').length} annonser som bare nevner medisinstudenter i teksten`;
 
   const q = state.q.toLowerCase();
@@ -118,21 +121,25 @@ function render() {
       (state.region === 'all' || j.region === state.region) &&
       (!q || `${j.title} ${j.employer} ${j.location} ${(j.keywords || []).join(' ')}`.toLowerCase().includes(q))
     )
-    .sort((a, b) => b.published.localeCompare(a.published) || REGION_ORDER[a.region || ''] - REGION_ORDER[b.region || ''] || (b.relevance?.score || 0) - (a.relevance?.score || 0));
+    .sort((a, b) => {
+      const byScore = (b.relevance?.score || 0) - (a.relevance?.score || 0);
+      const byDate = b.published.localeCompare(a.published);
+      return state.sort === 'best' ? byScore || byDate : byDate || byScore;
+    });
 
   const top = shown.filter((j) => j.relevance?.level === 'høy').length;
-  $('sub').innerHTML = `<b>${shown.length}</b> ledige ${shown.length === 1 ? 'stilling' : 'stillinger'} · <b>${top}</b> svært relevante for deg på 5. året`;
+  $('sub').innerHTML = `<b>${shown.length}</b> ledige ${shown.length === 1 ? 'stilling' : 'stillinger'} · <b>${top}</b> med relevans 8 eller høyere`;
 
   const newSince = new Date(Date.now() - 864e5).toISOString();
   let html = '', day = null;
   for (const j of shown) {
-    if (j.published !== day) { day = j.published; html += `<h2>${esc(dayLabel(day))}</h2>`; }
+    if (state.sort === 'new' && j.published !== day) { day = j.published; html += `<h2>${esc(dayLabel(day))}</h2>`; }
     const level = j.relevance?.level || 'lav';
-    const meta = [esc(j.employer), esc(j.location), j.deadline ? `Frist ${esc(shortDate(j.deadline))}` : '', esc(j.source)];
+    const meta = [esc(j.employer), esc(j.location), state.sort === 'best' ? `Publisert ${esc(shortDate(j.published))}` : '', j.deadline ? `Frist ${esc(shortDate(j.deadline))}` : '', esc(j.source)];
     html += `<a class="job" href="${esc(j.url)}" target="_blank" rel="noopener">
       <div class="top">
         ${j.firstSeen > newSince ? '<span class="pill new">Ny</span>' : ''}
-        <span class="pill ${level}">${REL_NAME[level]}</span>
+        <span class="pill ${level}">Relevans ${j.relevance?.score ?? '–'}/10</span>
         ${j.region ? `<span class="pill ${j.region}">${REGION_NAME[j.region]}</span>` : ''}
       </div>
       <h3>${esc(j.title)}</h3>
@@ -157,9 +164,10 @@ async function loadJobs() {
 }
 
 document.addEventListener('click', (e) => {
-  const b = e.target.closest('[data-period],[data-region]');
+  const b = e.target.closest('[data-period],[data-region],[data-sort]');
   if (!b) return;
   if (b.dataset.period) state.period = b.dataset.period;
+  else if (b.dataset.sort) state.sort = b.dataset.sort;
   else state.region = b.dataset.region;
   render();
 });

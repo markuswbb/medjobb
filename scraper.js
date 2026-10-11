@@ -76,47 +76,71 @@ function keyPoints(text, tags = []) {
   return points.slice(0, 10);
 }
 
-// Hvor relevant stillingen er for en medisinstudent på dette studieåret (har fullført året før).
-const STUDY_YEAR = 5;
+// Relevans 1–10 for studenten siden er laget for: 5. studieår, bor i Bergen (Oslo som nr. 2),
+// erfaring fra sengepost på sykehus (SUS) og fra hjemmetjenesten.
+const PROFILE = {
+  studyYear: 5,
+  regionBonus: { bergen: [2, 'Ligger i Bergen-området'], oslo: [1, 'Ligger i Oslo-området'] },
+  experience: [
+    [/sengepost/i, 'Du har 13 ukers erfaring fra sengepost'],
+    [/hjemmetjeneste|hjemmesykepleie|hjemmebasert/i, 'Du har erfaring fra hjemmetjenesten'],
+    [/helse stavanger|stavanger universitetss/i, 'Du har jobbet ved Stavanger universitetssjukehus'],
+  ],
+};
 const YEAR_WORDS = { første: 1, andre: 2, tredje: 3, fjerde: 4, femte: 5, sjette: 6 };
 const YEAR_REQ = /(fullført|bestått|avsluttet|minimum|minst)[^.]{0,25}?(\d|første|andre|tredje|fjerde|femte|sjette)\.? ?(studie)?år/i;
-const OTHER_ROLE = /overlege|spesialist|sykepleier|vernepleier|helsefagarbeider|leder|leiar|psykolog|fysioterapeut|sekretær|konsulent|rådgiver/i;
+const OTHER_ROLE = /overlege|spesialist|sykepleier|vernepleier|helsefagarbeider|leder|leiar|psykolog|fysioterapeut|sekretær|konsulent|rådgiver|terapeut|lærer/i;
 const STUDENT_ROLE = /ferievikar|sommervikar|student|legevikar|tilkalling|assistent|ekstravakt/i;
 
-function relevance(title, text, match) {
-  const inTitle = match === 'tittel';
-  let score = inTitle ? 60 : 15;
+function relevance(job, text) {
+  const { title } = job;
+  const inTitle = job.match === 'tittel';
+  const all = `${title} ${job.employer} ${text}`;
   const reasons = [];
+  let score;
   if (inTitle && /lisens/i.test(title)) {
-    score += 30;
-    reasons.push('Lisensstilling for medisinstudenter – aktuelt med studentlisens');
+    score = 7;
+    reasons.push('Lisensstilling for medisinstudenter');
   } else if (inTitle) {
-    score += 10;
+    score = 6;
     reasons.push('Retter seg direkte mot medisinstudenter');
-  } else if (STUDENT_ROLE.test(title)) {
-    score += 25;
+  } else if (STUDENT_ROLE.test(title) && !OTHER_ROLE.test(title)) {
+    score = 4;
     reasons.push('Student-/vikarstilling der medisinstudenter nevnes');
-  } else {
+  } else if (!OTHER_ROLE.test(title)) {
+    score = 2;
     reasons.push('Medisinstudenter nevnes bare i annonseteksten');
+  } else {
+    score = 1;
+    reasons.push('Først og fremst for en annen yrkesgruppe');
   }
-  const req = YEAR_REQ.exec(`${title} ${text}`);
-  const year = req && (YEAR_WORDS[req[2].toLowerCase()] || Number(req[2]));
-  if (year && year < STUDY_YEAR) {
-    score += 10;
-    reasons.push(`Du oppfyller kravet om fullført ${year}. studieår`);
-  } else if (year === STUDY_YEAR) {
-    score -= 15;
-    reasons.push(`Krever fullført ${year}. studieår – aktuelt først etter dette året`);
-  } else if (year > STUDY_YEAR) {
-    score -= 40;
-    reasons.push(`Krever fullført ${year}. studieår`);
+  // Bonusene teller bare for stillinger som faktisk kan passe.
+  if (score >= 4) {
+    const req = YEAR_REQ.exec(all);
+    const year = req && (YEAR_WORDS[req[2].toLowerCase()] || Number(req[2]));
+    if (year && year < PROFILE.studyYear) {
+      score += 1;
+      reasons.push(`Du oppfyller kravet om fullført ${year}. studieår`);
+    } else if (year === PROFILE.studyYear) {
+      score -= 1;
+      reasons.push(`Krever fullført ${year}. studieår – aktuelt først etter dette året`);
+    } else if (year > PROFILE.studyYear) {
+      score -= 3;
+      reasons.push(`Krever fullført ${year}. studieår`);
+    }
+    const exp = PROFILE.experience.filter(([re]) => re.test(all)).map(([, why]) => why);
+    if (exp.length) {
+      score += 1;
+      reasons.push(...exp);
+    }
+    const region = PROFILE.regionBonus[job.region];
+    if (region) {
+      score += region[0];
+      reasons.push(region[1]);
+    }
   }
-  if (!inTitle && OTHER_ROLE.test(title)) {
-    score -= 15;
-    reasons.push('Stillingen er først og fremst for en annen yrkesgruppe');
-  }
-  score = Math.max(0, Math.min(100, score));
-  return { score, level: score >= 80 ? 'høy' : score >= 50 ? 'middels' : 'lav', reason: reasons.join('. ') };
+  score = Math.max(1, Math.min(10, score));
+  return { score, level: score >= 8 ? 'høy' : score >= 5 ? 'middels' : 'lav', reason: reasons.join(' · ') };
 }
 
 const NAV_QUERIES = ['medisinstudent', 'medisinstudenter', 'medisinerstudent', 'legestudent'];
@@ -289,7 +313,7 @@ async function scrape() {
     const old = known.get(job.id);
     if (!old) added++;
     const { text, ...rest } = job;
-    known.set(job.id, { ...rest, relevance: relevance(job.title, text, job.match), firstSeen: old?.firstSeen || now, lastSeen: now });
+    known.set(job.id, { ...rest, relevance: relevance(job, text), firstSeen: old?.firstSeen || now, lastSeen: now });
   }
 
   const cutoff = new Date(Date.now() - KEEP_DAYS * 864e5).toISOString();
