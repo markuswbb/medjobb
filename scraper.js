@@ -40,7 +40,7 @@ const KEY_POINTS = [
   [/helg/i, 'Helgearbeid'],
   [/natt(evakt|arbeid|tjeneste)?\b/i, 'Nattevakter'],
   [/vaktordning|vaktarbeid|turnus(?!lege|vent)|tredelt/i, 'Vakt/turnus'],
-  [/akuttmottak|akuttmedisin/i, 'Akuttmottak'],
+  [/akuttmottak|akuttmedisin|\\bmottak/i, 'Akuttmottak/mottak'],
   [/legevakt/i, 'Legevakt'],
   [/psykiatri|psykisk helse/i, 'Psykiatri'],
   [/rus(behandling|medisin|seksjon|-| og)/i, 'Rus'],
@@ -77,10 +77,11 @@ function keyPoints(text, tags = []) {
 }
 
 // Relevans 1–10 for studenten siden er laget for: 6. studieår, bor i Bergen (Oslo som nr. 2),
-// erfaring fra sengepost på sykehus (SUS) og fra hjemmetjenesten.
+// erfaring fra sengepost på sykehus (SUS) og fra hjemmetjenesten. Vil helst jobbe i akuttmottak/mottak.
 const PROFILE = {
   studyYear: 6,
   regionBonus: { bergen: [2, 'Ligger i Bergen-området'], oslo: [1, 'Ligger i Oslo-området'] },
+  wants: [/akuttmottak|akuttmedisin|\bmottak/i, 2, 'Akuttmottak/mottak – det du helst vil ha'],
   experience: [
     [/sengepost/i, 'Du har 13 ukers erfaring fra sengepost'],
     [/hjemmetjeneste|hjemmesykepleie|hjemmebasert/i, 'Du har erfaring fra hjemmetjenesten'],
@@ -132,6 +133,11 @@ function relevance(job, text) {
     if (exp.length) {
       score += 1;
       reasons.push(...exp);
+    }
+    const [wanted, bonus, why] = PROFILE.wants;
+    if (wanted.test(all)) {
+      score += bonus;
+      reasons.splice(1, 0, why);
     }
     const region = PROFILE.regionBonus[job.region];
     if (region) {

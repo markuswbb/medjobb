@@ -1,5 +1,5 @@
 {
- "lastRun": "2026-10-11T05:11:22.503Z",
+ "lastRun": "2026-10-11T05:19:43.084Z",
  "sources": {
   "NAV": {
    "ok": false,
@@ -38,7 +38,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5185788127",
@@ -56,7 +56,7 @@
    "keywords": [
     "100 % stilling",
     "Lisens kreves",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Kirurgi"
    ],
    "match": "tekst",
@@ -66,7 +66,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5185611017",
@@ -93,7 +93,7 @@
     "reason": "Lisensstilling for medisinstudenter"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5187101140",
@@ -120,7 +120,7 @@
     "reason": "Student-/vikarstilling der medisinstudenter nevnes"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5181648007",
@@ -146,7 +146,7 @@
     "reason": "Student-/vikarstilling der medisinstudenter nevnes · Du har 13 ukers erfaring fra sengepost"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5191504121",
@@ -173,7 +173,7 @@
     "reason": "Retter seg direkte mot medisinstudenter · Du oppfyller kravet om fullført 4. studieår"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5192094878",
@@ -196,7 +196,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5189588869",
@@ -214,7 +214,7 @@
    "keywords": [
     "Lisens kreves",
     "Sommer-/ferievikar",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Kirurgi",
     "Indremedisin",
     "Samarbeidsevner"
@@ -226,7 +226,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5188210825",
@@ -249,12 +249,12 @@
    ],
    "match": "tittel",
    "relevance": {
-    "score": 7,
-    "level": "middels",
-    "reason": "Lisensstilling for medisinstudenter"
+    "score": 9,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter · Akuttmottak/mottak – det du helst vil ha"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5192349376",
@@ -282,7 +282,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5191506673",
@@ -308,7 +308,7 @@
     "reason": "Retter seg direkte mot medisinstudenter"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5178605087",
@@ -336,7 +336,7 @@
     "reason": "Lisensstilling for medisinstudenter · Du har 13 ukers erfaring fra sengepost · Ligger i Oslo-området"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5192012252",
@@ -363,7 +363,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5188437435",
@@ -392,7 +392,7 @@
     "reason": "Lisensstilling for medisinstudenter"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5177772023",
@@ -418,7 +418,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5156156739",
@@ -435,7 +435,7 @@
    "summary": "Har du lyst på en jobb som gir deg faglige utfordringer, spenning, glede og et godt kollegialt fellesskap? Vi søker etter legespesialist med kompetanse innen utredning, behandling og oppfølging av geriatriske pasienter!Sykehuset Levanger er ett av to sykehus i",
    "keywords": [
     "300 % stilling",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Psykiatri",
     "Kirurgi",
     "Indremedisin",
@@ -448,7 +448,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5173406708",
@@ -477,7 +477,7 @@
     "reason": "Student-/vikarstilling der medisinstudenter nevnes"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5182185301",
@@ -494,7 +494,7 @@
    "summary": "Vi søker en trygg, tydelig og engasjert avdelingssykepleier som motiveres av å lede og utvikle mennesker, kultur og tjeneste. Du trives med å være tett på medarbeidere og daglig drift, samtidig som du evner å løfte blikket og bidra til strategisk utvikling. I ",
    "keywords": [
     "Lisens kreves",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Legevakt"
    ],
    "match": "tekst",
@@ -504,7 +504,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5185507870",
@@ -531,7 +531,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5187802755",
@@ -559,7 +559,7 @@
     "reason": "Lisensstilling for medisinstudenter · Du har 13 ukers erfaring fra sengepost · Du har jobbet ved Stavanger universitetssjukehus"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5189614873",
@@ -588,7 +588,7 @@
     "reason": "Student-/vikarstilling der medisinstudenter nevnes · Du har jobbet ved Stavanger universitetssjukehus"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "jobbnorge:309405",
@@ -611,7 +611,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5170261120",
@@ -638,7 +638,7 @@
     "reason": "Lisensstilling for medisinstudenter · Du har 13 ukers erfaring fra sengepost · Ligger i Bergen-området"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5178983260",
@@ -665,7 +665,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5186285055",
@@ -684,18 +684,18 @@
     "Lisens kreves",
     "Sommer-/ferievikar",
     "Vakt/turnus",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Kirurgi",
     "Indremedisin"
    ],
    "match": "tittel",
    "relevance": {
-    "score": 8,
+    "score": 10,
     "level": "høy",
-    "reason": "Lisensstilling for medisinstudenter · Ligger i Oslo-området"
+    "reason": "Lisensstilling for medisinstudenter · Akuttmottak/mottak – det du helst vil ha · Ligger i Oslo-området"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5188410679",
@@ -721,7 +721,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5181273650",
@@ -750,7 +750,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5186179196",
@@ -782,7 +782,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5182721329",
@@ -810,7 +810,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5185021369",
@@ -839,7 +839,7 @@
     "reason": "Lisensstilling for medisinstudenter"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5172841048",
@@ -862,7 +862,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5181900936",
@@ -878,17 +878,17 @@
    "url": "https://8038.webcruiter.no/Main/Recruit/Public/5181900936?language=nb&link_source_id=2000",
    "summary": "Er du medisinstudent og ønsker relevant klinisk erfaring? Vi søker nå medisinstudenter til vår scop-/telemetrisentral. Scop /Telemetri sentralen er en del av medisinsk overvåkning, hvor vi behandler akutt kritisk syke pasienter som har behov for avansert medis",
    "keywords": [
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Telemetri/scopvakt"
    ],
    "match": "tittel",
    "relevance": {
-    "score": 7,
-    "level": "middels",
-    "reason": "Retter seg direkte mot medisinstudenter · Du har 13 ukers erfaring fra sengepost"
+    "score": 9,
+    "level": "høy",
+    "reason": "Retter seg direkte mot medisinstudenter · Akuttmottak/mottak – det du helst vil ha · Du har 13 ukers erfaring fra sengepost"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5180568737",
@@ -904,7 +904,7 @@
    "url": "https://6005556.webcruiter.no/Main/Recruit/Public/5180568737?language=nb&link_source_id=2000",
    "summary": "Ønsker du en sentral rolle i en dynamisk og spennende virksomhet der du får arbeid med personal, drift og kompetanseutvikling ? Vi søker en engasjert og strukturert medarbeider som vil bidra til å sikre god drift, høy faglig kvalitet og et godt arbeidsmiljø. A",
    "keywords": [
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Legevakt",
     "Sykehjem",
     "Legekontor"
@@ -916,7 +916,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5179576305",
@@ -934,7 +934,7 @@
    "keywords": [
     "100 % stilling",
     "Sommer-/ferievikar",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Indremedisin"
    ],
    "match": "tekst",
@@ -944,7 +944,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5180375378",
@@ -971,7 +971,7 @@
     "reason": "Medisinstudenter nevnes bare i annonseteksten"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5182287118",
@@ -988,7 +988,7 @@
    "summary": "Sykepleier ved Nedre Romerike legevakt – bli en viktig del av laget vårt!Vil du ha en arbeidshverdag med faglige utfordringer, variasjon og et sterkt kollegafellesskap? Da ønsker vi å høre fra deg!Legevakten er en viktig del av den akuttmedisinske kjeden og ha",
    "keywords": [
     "Vakt/turnus",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Legevakt"
    ],
    "match": "tekst",
@@ -998,7 +998,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5179073928",
@@ -1024,7 +1024,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5157095765",
@@ -1051,7 +1051,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:4956051716",
@@ -1076,7 +1076,7 @@
     "reason": "Først og fremst for en annen yrkesgruppe"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   },
   {
    "id": "webcruiter:5043788903",
@@ -1095,19 +1095,19 @@
     "15 % stilling",
     "Tilkallingsvikar",
     "Helgearbeid",
-    "Akuttmottak",
+    "Akuttmottak/mottak",
     "Kirurgi",
     "Indremedisin",
     "Sykehjem"
    ],
    "match": "tekst",
    "relevance": {
-    "score": 6,
-    "level": "middels",
-    "reason": "Student-/vikarstilling der medisinstudenter nevnes · Du har 13 ukers erfaring fra sengepost · Ligger i Oslo-området"
+    "score": 8,
+    "level": "høy",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes · Akuttmottak/mottak – det du helst vil ha · Du har 13 ukers erfaring fra sengepost · Ligger i Oslo-området"
    },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T05:11:22.503Z"
+   "lastSeen": "2026-10-11T05:19:43.084Z"
   }
  ]
 }
