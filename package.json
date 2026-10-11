@@ -1,0 +1,6 @@
+{
+  "name": "medjobb",
+  "private": true,
+  "scripts": { "start": "node server.js", "scrape": "node scraper.js", "daily": "node daily.js" },
+  "dependencies": { "nodemailer": "^6.9.14" }
+}

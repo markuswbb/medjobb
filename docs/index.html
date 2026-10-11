@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medjobb – stillinger for medisinstudenter</title>
+<style>
+  :root { --bg: #fbfbfa; --text: #1a1d1c; --muted: #737b78; --line: #e8eae8; --soft: #f1f3f1; --accent: #0b6e5b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111413; --text: #e8ecea; --muted: #8b9591; --line: #262c2a; --soft: #1b201e; --accent: #5ac8ad; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 48px 20px 72px; }
+  h1 { margin: 0; font-size: 24px; font-weight: 650; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); margin: 4px 0 28px; font-size: 14px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .seg { display: flex; background: var(--soft); border-radius: 9px; padding: 3px; }
+  .seg button { font: inherit; font-size: 13.5px; border: 0; background: none; color: var(--muted); padding: 5px 12px; border-radius: 7px; cursor: pointer; }
+  .seg button.on { background: var(--bg); color: var(--text); font-weight: 550; box-shadow: 0 0 0 1px var(--line); }
+  input[type=search] { flex: 1 1 160px; min-width: 0; font: inherit; font-size: 14px; padding: 7px 12px; border-radius: 9px; border: 1px solid var(--line); background: transparent; color: var(--text); outline: none; }
+  input[type=search]:focus { border-color: var(--accent); }
+  h2 { font-size: 12.5px; font-weight: 550; color: var(--muted); margin: 34px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  a.job { display: block; padding: 16px 0; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
+  .job h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.4; }
+  a.job:hover h3 { color: var(--accent); }
+  .new { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 2px; }
+  .meta { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+  .meta b { color: var(--accent); font-weight: 550; }
+  .keys { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+  .keys span { font-size: 12.5px; background: var(--soft); border-radius: 6px; padding: 1px 8px; }
+  .empty { color: var(--muted); padding: 48px 0; text-align: center; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; }
+  footer label { display: flex; gap: 7px; align-items: center; margin-bottom: 10px; cursor: pointer; }
+  footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Medjobb</h1>
+  <p class="sub" id="sub">Ledige stillinger for medisinstudenter</p>
+
+  <div class="filters">
+    <div class="seg" id="regions"></div>
+    <div class="seg" id="period"></div>
+    <input type="search" id="q" placeholder="Søk …">
+  </div>
+
+  <main id="list"><p class="empty">Laster stillinger …</p></main>
+
+  <footer>
+    <label><input type="checkbox" id="loose"> <span id="loose-label"></span></label>
+    <p id="foot"></p>
+    <p id="errors"></p>
+  </footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const PERIODS = [['all', 'Alle'], ['week', '7 dager'], ['today', 'I dag']];
+const REGIONS = [['all', 'Hele landet'], ['bergen', 'Bergen'], ['oslo', 'Oslo']];
+const REGION_NAME = { bergen: 'Bergen-området', oslo: 'Oslo-området' };
+const REGION_ORDER = { bergen: 0, oslo: 1, '': 2 };
+const state = { data: null, period: 'all', region: 'all', q: '', loose: false };
+
+const isoDay = (d) => new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+const today = () => isoDay(new Date());
+const daysAgo = (n) => isoDay(new Date(Date.now() - n * 864e5));
+
+function dayLabel(iso) {
+  if (iso === today()) return 'I dag';
+  if (iso === daysAgo(1)) return 'I går';
+  const d = new Date(iso + 'T12:00');
+  if (isNaN(d)) return 'Ukjent dato';
+  const s = d.toLocaleDateString('nb-NO', { weekday: 'long', day: 'numeric', month: 'long' });
+  return s[0].toUpperCase() + s.slice(1);
+}
+
+function shortDate(s) {
+  const d = new Date(s + 'T12:00');
+  return /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(d) ? d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' }) : s;
+}
+
+function activeJobs() {
+  const { jobs, lastRun, sources } = state.data;
+  // Vis bare annonser som fortsatt lå ute ved siste oppdatering.
+  return jobs.filter((j) => j.lastSeen === lastRun || !sources[j.source === 'FINN' ? 'NAV' : j.source]?.ok);
+}
+
+const seg = (el, items, current, attr) =>
+  (el.innerHTML = items.map(([k, l]) => `<button class="${current === k ? 'on' : ''}" data-${attr}="${k}">${l}</button>`).join(''));
+
+function render() {
+  const active = activeJobs();
+  const all = active.filter((j) => state.loose || j.match === 'tittel');
+  const weekAgo = daysAgo(6);
+  seg($('regions'), REGIONS, state.region, 'region');
+  seg($('period'), PERIODS, state.period, 'period');
+  $('loose-label').textContent = `Vis også ${active.filter((j) => j.match !== 'tittel').length} annonser som bare nevner medisinstudenter i teksten`;
+
+  const q = state.q.toLowerCase();
+  const shown = all
+    .filter((j) =>
+      (state.period === 'all' || (state.period === 'today' ? j.published === today() : j.published >= weekAgo)) &&
+      (state.region === 'all' || j.region === state.region) &&
+      (!q || `${j.title} ${j.employer} ${j.location} ${(j.keywords || []).join(' ')}`.toLowerCase().includes(q))
+    )
+    .sort((a, b) => b.published.localeCompare(a.published) || REGION_ORDER[a.region || ''] - REGION_ORDER[b.region || '']);
+
+  $('sub').textContent = `${shown.length} ledige ${shown.length === 1 ? 'stilling' : 'stillinger'} for medisinstudenter`;
+
+  const newSince = new Date(Date.now() - 864e5).toISOString();
+  let html = '', day = null;
+  for (const j of shown) {
+    if (j.published !== day) { day = j.published; html += `<h2>${esc(dayLabel(day))}</h2>`; }
+    const meta = [j.region ? `<b>${REGION_NAME[j.region]}</b>` : '', esc(j.employer), j.region ? '' : esc(j.location), j.deadline ? `Frist ${esc(shortDate(j.deadline))}` : '', esc(j.source)];
+    html += `<a class="job" href="${esc(j.url)}" target="_blank" rel="noopener">
+      <h3>${j.firstSeen > newSince ? '<span class="new" title="Ny siste døgn"></span>' : ''}${esc(j.title)}</h3>
+      <div class="meta">${meta.filter(Boolean).join(' · ')}</div>
+      ${j.keywords?.length ? `<div class="keys">${j.keywords.map((k) => `<span>${esc(k)}</span>`).join('')}</div>` : ''}</a>`;
+  }
+  $('list').innerHTML = html || '<p class="empty">Ingen stillinger matcher filtrene.</p>';
+
+  $('foot').textContent = `Sist oppdatert ${new Date(state.data.lastRun).toLocaleString('nb-NO', { dateStyle: 'medium', timeStyle: 'short' })} · oppdateres hver dag kl. 08 · kilder: Webcruiter, NAV, FINN (via NAV) og Jobbnorge`;
+  const failed = Object.entries(state.data.sources).filter(([, s]) => !s.ok).map(([n]) => n);
+  $('errors').textContent = failed.length ? `Fikk ikke hentet fra ${failed.join(', ')} ved siste oppdatering.` : '';
+}
+
+async function loadJobs() {
+  try {
+    state.data = await (await fetch('jobs.json', { cache: 'no-store' })).json();
+    render();
+  } catch {
+    $('list').innerHTML = '<p class="empty">Ingen stillinger er hentet ennå.</p>';
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-period],[data-region]');
+  if (!b) return;
+  if (b.dataset.period) state.period = b.dataset.period;
+  else state.region = b.dataset.region;
+  render();
+});
+$('q').addEventListener('input', (e) => { state.q = e.target.value; render(); });
+$('loose').addEventListener('change', (e) => { state.loose = e.target.checked; render(); });
+loadJobs();
+</script>
+</body>
+</html>
