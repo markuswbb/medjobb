@@ -6,56 +6,40 @@
 <title>Medjobb – stillinger for medisinstudenter</title>
 <style>
   :root {
-    --bg: #f7f5fb; --card: #ffffff; --text: #1d1b2a; --muted: #6f6c80; --line: #e9e6f2; --soft: #eeebf6;
-    --violet: #6d4aff; --pink: #ff5c8a;
-    --high: #0f9d6c; --high-bg: #dff7ec; --mid: #c27803; --mid-bg: #fdf0cf; --low: #7b7890; --low-bg: #eceaf2;
-    --bergen: #1877c9; --bergen-bg: #dcedfc; --oslo: #a13fc4; --oslo-bg: #f4e1fb;
-    --c0: #e3f1ff; --c0t: #1c5fa3; --c1: #e6f7e9; --c1t: #1f7a3d; --c2: #fff0dc; --c2t: #a65b00;
-    --c3: #fde6ef; --c3t: #b02a5f; --c4: #ece7ff; --c4t: #5637c9; --c5: #dff6f5; --c5t: #0b7a78;
+    --bg: #f8f8f7; --card: #ffffff; --text: #1c1d21; --muted: #72747c; --line: #e8e8e6; --soft: #f0f0ee;
+    --accent: #3f5bd9; --accent-bg: #e9edfc; --high: #17805a; --high-bg: #e3f4ec;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #13111c; --card: #1c1a29; --text: #eceaf6; --muted: #9c98b3; --line: #2b2840; --soft: #242136;
-      --violet: #a08bff; --pink: #ff7da3;
-      --high: #4fd6a2; --high-bg: #123327; --mid: #f2bd4b; --mid-bg: #3a2c0c; --low: #a3a0b8; --low-bg: #2a2740;
-      --bergen: #6db7f5; --bergen-bg: #12304a; --oslo: #d590f0; --oslo-bg: #381a45;
-      --c0: #142c44; --c0t: #8cc4f7; --c1: #153322; --c1t: #7fd89b; --c2: #3a2a12; --c2t: #f3bd72;
-      --c3: #3d1828; --c3t: #f79abb; --c4: #26204a; --c4t: #b6a5ff; --c5: #10302f; --c5t: #77d8d5;
+      --bg: #121316; --card: #1a1b20; --text: #ebecef; --muted: #9193a0; --line: #2a2b33; --soft: #23242b;
+      --accent: #8fa3ff; --accent-bg: #1f2647; --high: #5fd0a2; --high-bg: #14301f;
     }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 720px; margin: 0 auto; padding: 44px 16px 72px; }
-  h1 { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-  h1 span { background: linear-gradient(90deg, var(--violet), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; }
   .sub { color: var(--muted); margin: 8px 0 24px; }
   .sub b { color: var(--text); }
   .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .seg { display: flex; background: var(--soft); border-radius: 999px; padding: 3px; }
   .seg button { font: inherit; font-size: 13.5px; border: 0; background: none; color: var(--muted); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
-  .seg button.on { background: var(--violet); color: #fff; font-weight: 600; }
+  .seg button.on { background: var(--card); color: var(--text); font-weight: 600; box-shadow: 0 1px 2px rgba(0, 0, 0, .08); }
   input[type=search] { flex: 1 1 150px; min-width: 0; font: inherit; font-size: 14px; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); outline: none; }
-  input[type=search]:focus { border-color: var(--violet); }
+  input[type=search]:focus { border-color: var(--accent); }
   h2 { font-size: 13px; font-weight: 700; color: var(--muted); margin: 30px 4px 10px; }
-  a.job { display: block; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--low); border-radius: 16px; padding: 16px 18px; margin-bottom: 10px; color: inherit; text-decoration: none; transition: transform .12s, box-shadow .12s; }
-  a.job.høy { border-left-color: var(--high); }
-  a.job.middels { border-left-color: var(--mid); }
-  a.job:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(80, 60, 160, .12); }
+  a.job { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; color: inherit; text-decoration: none; transition: border-color .12s, box-shadow .12s; }
+  a.job:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0, 0, 0, .05); }
   .top { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-  .pill { font-size: 12px; font-weight: 650; padding: 2px 10px; border-radius: 999px; }
+  .top:empty { display: none; }
+  .pill { font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--soft); color: var(--muted); }
   .pill.høy { background: var(--high-bg); color: var(--high); }
-  .pill.middels { background: var(--mid-bg); color: var(--mid); }
-  .pill.lav { background: var(--low-bg); color: var(--low); }
-  .pill.bergen { background: var(--bergen-bg); color: var(--bergen); }
-  .pill.oslo { background: var(--oslo-bg); color: var(--oslo); }
-  .pill.new { background: var(--pink); color: #fff; }
-  .job h3 { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; }
+  .pill.bergen, .pill.oslo, .pill.new { background: var(--accent-bg); color: var(--accent); }
+  .job h3 { margin: 0; font-size: 16.5px; font-weight: 650; line-height: 1.35; letter-spacing: -0.01em; }
   .meta { color: var(--muted); font-size: 13.5px; margin-top: 3px; }
-  .why { font-size: 13.5px; margin-top: 8px; }
+  .why { font-size: 13.5px; margin-top: 8px; color: var(--muted); }
   .keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
-  .keys span { font-size: 12.5px; font-weight: 550; border-radius: 8px; padding: 2px 9px; }
-  .k0 { background: var(--c0); color: var(--c0t); } .k1 { background: var(--c1); color: var(--c1t); } .k2 { background: var(--c2); color: var(--c2t); }
-  .k3 { background: var(--c3); color: var(--c3t); } .k4 { background: var(--c4); color: var(--c4t); } .k5 { background: var(--c5); color: var(--c5t); }
+  .keys span { font-size: 12.5px; border: 1px solid var(--line); border-radius: 7px; padding: 1px 8px; }
   .empty { color: var(--muted); padding: 48px 0; text-align: center; }
   footer { margin-top: 30px; color: var(--muted); font-size: 12.5px; padding: 0 4px; }
   footer label { display: flex; gap: 7px; align-items: center; margin-bottom: 10px; cursor: pointer; }
@@ -64,7 +48,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>🩺 <span>Medjobb</span></h1>
+  <h1>Medjobb</h1>
   <p class="sub" id="sub">Ledige stillinger for medisinstudenter</p>
 
   <div class="filters">
@@ -87,8 +71,8 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const PERIODS = [['all', 'Alle'], ['week', '7 dager'], ['today', 'I dag']];
 const REGIONS = [['all', 'Hele landet'], ['bergen', 'Bergen'], ['oslo', 'Oslo']];
-const REGION_NAME = { bergen: '📍 Bergen-området', oslo: '📍 Oslo-området' };
-const REL_NAME = { høy: '★ Svært relevant', middels: 'Relevant', lav: 'Mindre relevant' };
+const REGION_NAME = { bergen: 'Bergen-området', oslo: 'Oslo-området' };
+const REL_NAME = { høy: 'Svært relevant', middels: 'Relevant', lav: 'Mindre relevant' };
 const REGION_ORDER = { bergen: 0, oslo: 1, '': 2 };
 const state = { data: null, period: 'all', region: 'all', q: '', loose: false };
 
@@ -109,9 +93,6 @@ function shortDate(s) {
   const d = new Date(s + 'T12:00');
   return /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(d) ? d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' }) : s;
 }
-
-// Samme nøkkelpunkt får alltid samme farge.
-const colorOf = (label) => 'k' + ([...label].reduce((sum, c) => sum + c.charCodeAt(0), 0) % 6);
 
 function activeJobs() {
   const { jobs, lastRun, sources } = state.data;
@@ -148,7 +129,7 @@ function render() {
     if (j.published !== day) { day = j.published; html += `<h2>${esc(dayLabel(day))}</h2>`; }
     const level = j.relevance?.level || 'lav';
     const meta = [esc(j.employer), esc(j.location), j.deadline ? `Frist ${esc(shortDate(j.deadline))}` : '', esc(j.source)];
-    html += `<a class="job ${level}" href="${esc(j.url)}" target="_blank" rel="noopener">
+    html += `<a class="job" href="${esc(j.url)}" target="_blank" rel="noopener">
       <div class="top">
         ${j.firstSeen > newSince ? '<span class="pill new">Ny</span>' : ''}
         <span class="pill ${level}">${REL_NAME[level]}</span>
@@ -157,7 +138,7 @@ function render() {
       <h3>${esc(j.title)}</h3>
       <div class="meta">${meta.filter(Boolean).join(' · ')}</div>
       ${j.relevance?.reason ? `<div class="why">${esc(j.relevance.reason)}</div>` : ''}
-      ${j.keywords?.length ? `<div class="keys">${j.keywords.map((k) => `<span class="${colorOf(k)}">${esc(k)}</span>`).join('')}</div>` : ''}</a>`;
+      ${j.keywords?.length ? `<div class="keys">${j.keywords.map((k) => `<span>${esc(k)}</span>`).join('')}</div>` : ''}</a>`;
   }
   $('list').innerHTML = html || '<p class="empty">Ingen stillinger matcher filtrene.</p>';
 
