@@ -76,10 +76,10 @@ function keyPoints(text, tags = []) {
   return points.slice(0, 10);
 }
 
-// Relevans 1–10 for studenten siden er laget for: 5. studieår, bor i Bergen (Oslo som nr. 2),
+// Relevans 1–10 for studenten siden er laget for: 6. studieår, bor i Bergen (Oslo som nr. 2),
 // erfaring fra sengepost på sykehus (SUS) og fra hjemmetjenesten.
 const PROFILE = {
-  studyYear: 5,
+  studyYear: 6,
   regionBonus: { bergen: [2, 'Ligger i Bergen-området'], oslo: [1, 'Ligger i Oslo-området'] },
   experience: [
     [/sengepost/i, 'Du har 13 ukers erfaring fra sengepost'],
