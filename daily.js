@@ -2,17 +2,19 @@
 const { scrape, load } = require('./scraper');
 
 const REGION_TITLES = [['bergen', 'Bergen-området'], ['oslo', 'Oslo-området'], ['', 'Resten av landet']];
+const REL_NAME = { høy: 'Svært relevant', middels: 'Relevant', lav: 'Mindre relevant' };
 const osloTime = (d) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Oslo', dateStyle: 'short', timeStyle: 'short' }).format(d);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 function emailHtml(jobs, siteUrl) {
   const sections = REGION_TITLES.map(([key, title]) => {
-    const list = jobs.filter((j) => j.region === key);
+    const list = jobs.filter((j) => j.region === key).sort((a, b) => b.relevance.score - a.relevance.score);
     if (!list.length) return '';
     const items = list
       .map(
         (j) => `<li style="margin-bottom:12px"><a href="${esc(j.url)}" style="color:#0b6e5b;font-weight:600">${esc(j.title)}</a><br>
         <span style="color:#555">${esc([j.employer, j.location].filter(Boolean).join(' · '))}${j.deadline ? ` · Frist: ${esc(j.deadline)}` : ''}</span>
+        ${j.relevance ? `<br><span style="font-size:13px;color:#333"><b>${REL_NAME[j.relevance.level]}:</b> ${esc(j.relevance.reason)}</span>` : ''}
         ${j.keywords?.length ? `<br><span style="font-size:13px;color:#333">Nøkkelpunkter: ${esc(j.keywords.join(' · '))}</span>` : ''}</li>`
       )
       .join('');

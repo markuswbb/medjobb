@@ -76,6 +76,49 @@ function keyPoints(text, tags = []) {
   return points.slice(0, 10);
 }
 
+// Hvor relevant stillingen er for en medisinstudent på dette studieåret (har fullført året før).
+const STUDY_YEAR = 5;
+const YEAR_WORDS = { første: 1, andre: 2, tredje: 3, fjerde: 4, femte: 5, sjette: 6 };
+const YEAR_REQ = /(fullført|bestått|avsluttet|minimum|minst)[^.]{0,25}?(\d|første|andre|tredje|fjerde|femte|sjette)\.? ?(studie)?år/i;
+const OTHER_ROLE = /overlege|spesialist|sykepleier|vernepleier|helsefagarbeider|leder|leiar|psykolog|fysioterapeut|sekretær|konsulent|rådgiver/i;
+const STUDENT_ROLE = /ferievikar|sommervikar|student|legevikar|tilkalling|assistent|ekstravakt/i;
+
+function relevance(title, text, match) {
+  const inTitle = match === 'tittel';
+  let score = inTitle ? 60 : 15;
+  const reasons = [];
+  if (inTitle && /lisens/i.test(title)) {
+    score += 30;
+    reasons.push('Lisensstilling for medisinstudenter – aktuelt med studentlisens');
+  } else if (inTitle) {
+    score += 10;
+    reasons.push('Retter seg direkte mot medisinstudenter');
+  } else if (STUDENT_ROLE.test(title)) {
+    score += 25;
+    reasons.push('Student-/vikarstilling der medisinstudenter nevnes');
+  } else {
+    reasons.push('Medisinstudenter nevnes bare i annonseteksten');
+  }
+  const req = YEAR_REQ.exec(`${title} ${text}`);
+  const year = req && (YEAR_WORDS[req[2].toLowerCase()] || Number(req[2]));
+  if (year && year < STUDY_YEAR) {
+    score += 10;
+    reasons.push(`Du oppfyller kravet om fullført ${year}. studieår`);
+  } else if (year === STUDY_YEAR) {
+    score -= 15;
+    reasons.push(`Krever fullført ${year}. studieår – aktuelt først etter dette året`);
+  } else if (year > STUDY_YEAR) {
+    score -= 40;
+    reasons.push(`Krever fullført ${year}. studieår`);
+  }
+  if (!inTitle && OTHER_ROLE.test(title)) {
+    score -= 15;
+    reasons.push('Stillingen er først og fremst for en annen yrkesgruppe');
+  }
+  score = Math.max(0, Math.min(100, score));
+  return { score, level: score >= 80 ? 'høy' : score >= 50 ? 'middels' : 'lav', reason: reasons.join('. ') };
+}
+
 const NAV_QUERIES = ['medisinstudent', 'medisinstudenter', 'medisinerstudent', 'legestudent'];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -130,6 +173,7 @@ async function fetchNav() {
           summary: clean(s.generatedSearchMetadata?.shortSummary),
           keywords: keyPoints(`${s.title} ${s.generatedSearchMetadata?.shortSummary || ''}`, s.properties?.searchtagsai || []),
           match: RELEVANT.test(`${s.title} ${(s.categoryList || []).map((c) => c.name).join(' ')}`) ? 'tittel' : 'tekst',
+          text: `${s.generatedSearchMetadata?.shortSummary || ''} ${(s.properties?.searchtagsai || []).join(' ')}`,
         });
       }
       if (hits.length < 100) break;
@@ -165,6 +209,7 @@ async function fetchWebcruiter() {
         summary: clean(a.Presentation).slice(0, 260),
         keywords: keyPoints(`${a.Heading} ${a.Presentation || ''}`),
         match: inTitle ? 'tittel' : 'tekst',
+        text: a.Presentation || '',
       });
     }
     if (!(data.Data || []).length) break;
@@ -193,6 +238,7 @@ async function fetchJobbnorge() {
       summary: clean(j.summary).slice(0, 260),
       keywords: keyPoints(`${j.title} ${j.summary || ''}`),
       match: inTitle ? 'tittel' : 'tekst',
+      text: j.summary || '',
     });
   }
   return jobs;
@@ -242,7 +288,8 @@ async function scrape() {
     seenKeys.add(key);
     const old = known.get(job.id);
     if (!old) added++;
-    known.set(job.id, { ...job, firstSeen: old?.firstSeen || now, lastSeen: now });
+    const { text, ...rest } = job;
+    known.set(job.id, { ...rest, relevance: relevance(job.title, text, job.match), firstSeen: old?.firstSeen || now, lastSeen: now });
   }
 
   const cutoff = new Date(Date.now() - KEEP_DAYS * 864e5).toISOString();

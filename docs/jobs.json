@@ -1,5 +1,5 @@
 {
- "lastRun": "2026-10-11T04:54:37.893Z",
+ "lastRun": "2026-10-11T05:00:01.589Z",
  "sources": {
   "NAV": {
    "ok": false,
@@ -32,8 +32,13 @@
     "Psykiatri"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5185788127",
@@ -55,8 +60,13 @@
     "Kirurgi"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5185611017",
@@ -77,8 +87,13 @@
     "Forskning"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5187101140",
@@ -99,8 +114,13 @@
     "Kirurgi"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 40,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5181648007",
@@ -120,8 +140,13 @@
     "Kirurgi"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 40,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5191504121",
@@ -142,8 +167,13 @@
     "Indremedisin"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 80,
+    "level": "høy",
+    "reason": "Retter seg direkte mot medisinstudenter. Du oppfyller kravet om fullført 4. studieår"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5192094878",
@@ -160,8 +190,13 @@
    "summary": "Vi søker overlege til Fysikalsk Medisinsk Poliklinikk med HelseIArbeid-senteret. Poliklinikken utreder pasienter med langvarige uspesifikke muskel-skjelettplager, hypermobilitet, lette til moderate psykiske plager og langvarig utmattelse. Legene er ansatt i Se",
    "keywords": [],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5189588869",
@@ -185,8 +220,13 @@
     "Samarbeidsevner"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5188210825",
@@ -208,8 +248,13 @@
     "Psykiatri"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5192349376",
@@ -231,8 +276,13 @@
     "Forskning"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5191506673",
@@ -252,8 +302,13 @@
     "Indremedisin"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 70,
+    "level": "middels",
+    "reason": "Retter seg direkte mot medisinstudenter"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5178605087",
@@ -275,8 +330,13 @@
     "Indremedisin"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5192012252",
@@ -297,8 +357,13 @@
     "Selvstendig"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5188437435",
@@ -321,8 +386,13 @@
     "Rus"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5177772023",
@@ -342,8 +412,13 @@
     "Samarbeidsevner"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5156156739",
@@ -367,8 +442,13 @@
     "Forskning"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5173406708",
@@ -391,8 +471,13 @@
     "Legekontor"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 40,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5182185301",
@@ -413,8 +498,13 @@
     "Legevakt"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5185507870",
@@ -435,8 +525,13 @@
     "Politiattest"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5187802755",
@@ -458,8 +553,13 @@
     "Psykiatri"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5189614873",
@@ -482,8 +582,13 @@
     "Rus"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 40,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "jobbnorge:309405",
@@ -500,8 +605,13 @@
    "summary": "Bli med på UiOs team! Vi søker deltidsmedarbeider for administrativt arbeid med studenter.",
    "keywords": [],
    "match": "tekst",
+   "relevance": {
+    "score": 25,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5170261120",
@@ -522,8 +632,13 @@
     "Politiattest"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5178983260",
@@ -544,8 +659,13 @@
     "Legevakt"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5186285055",
@@ -569,8 +689,13 @@
     "Indremedisin"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5188410679",
@@ -590,8 +715,13 @@
     "Kirurgi"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5181273650",
@@ -614,8 +744,13 @@
     "Politiattest"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5186179196",
@@ -641,8 +776,13 @@
     "Kirurgi"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 25,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5182721329",
@@ -664,8 +804,13 @@
     "Legekontor"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5185021369",
@@ -688,8 +833,13 @@
     "Indremedisin"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 90,
+    "level": "høy",
+    "reason": "Lisensstilling for medisinstudenter – aktuelt med studentlisens"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5172841048",
@@ -706,8 +856,13 @@
    "summary": "Fagskolen Vestfold og Telemark søker en engasjert og faglig sterk medarbeider i en 50 prosent stilling innen helsefag. Stillingen hører til avdeling for helse- og ledelsesfag, og det kan bli aktuelt å øke stillingsprosenten på sikt. Du skal bidra til å utvikle",
    "keywords": [],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5181900936",
@@ -727,8 +882,13 @@
     "Telemetri/scopvakt"
    ],
    "match": "tittel",
+   "relevance": {
+    "score": 70,
+    "level": "middels",
+    "reason": "Retter seg direkte mot medisinstudenter"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5180568737",
@@ -750,8 +910,13 @@
     "Legekontor"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5179576305",
@@ -773,8 +938,13 @@
     "Indremedisin"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5180375378",
@@ -795,8 +965,13 @@
     "Sykehjem"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 15,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5182287118",
@@ -817,8 +992,13 @@
     "Legevakt"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5179073928",
@@ -838,8 +1018,13 @@
     "Forskning"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5157095765",
@@ -860,8 +1045,13 @@
     "Selvstendig"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:4956051716",
@@ -880,8 +1070,13 @@
     "Psykiatri"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 0,
+    "level": "lav",
+    "reason": "Medisinstudenter nevnes bare i annonseteksten. Stillingen er først og fremst for en annen yrkesgruppe"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   },
   {
    "id": "webcruiter:5043788903",
@@ -906,8 +1101,13 @@
     "Sykehjem"
    ],
    "match": "tekst",
+   "relevance": {
+    "score": 40,
+    "level": "lav",
+    "reason": "Student-/vikarstilling der medisinstudenter nevnes"
+   },
    "firstSeen": "2026-10-11T04:54:37.893Z",
-   "lastSeen": "2026-10-11T04:54:37.893Z"
+   "lastSeen": "2026-10-11T05:00:01.589Z"
   }
  ]
 }
